@@ -15,38 +15,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.antonioqm.bbcha.adapter.GuestAdapter;
-import com.antonioqm.bbcha.dao.GuestDAO;
-import com.antonioqm.bbcha.model.Guest;
+import com.antonioqm.bbcha.adapter.GiftAdapter;
+import com.antonioqm.bbcha.dao.GiftDAO;
+import com.antonioqm.bbcha.model.Gift;
 
 import java.util.List;
 
-public class GuestsActivity extends AppCompatActivity
+public class GiftsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private GuestDAO dao;
-    private GuestAdapter adapter;
-    private List<Guest> guests;
+    GiftDAO dao;
+    GiftAdapter adapter;
+    List<Gift> gifts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guests);
+        setContentView(R.layout.activity_gifts);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        dao = new GuestDAO(this);
-        guests = dao.retrieveDigest();
-        adapter = new GuestAdapter(this, guests);
+        dao = new GiftDAO(this);
+        gifts = dao.retrieveDigest();
+        adapter = new GiftAdapter(this, gifts);
 
-        ListView listView = (ListView) findViewById(R.id.guests_listview);
+        ListView listView = (ListView) findViewById(R.id.gifts_listview);
         listView.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), GuestActivity.class));
+                startActivity(new Intent(view.getContext(), GiftActivity.class));
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
             }
@@ -55,7 +55,6 @@ public class GuestsActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -75,7 +74,7 @@ public class GuestsActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.guests, menu);
+        getMenuInflater().inflate(R.menu.gifts, menu);
         return true;
     }
 

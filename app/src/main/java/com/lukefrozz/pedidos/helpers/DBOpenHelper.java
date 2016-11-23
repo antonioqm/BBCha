@@ -26,7 +26,16 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             "name TEXT NOT NULL, " +
             "description TEXT " +
         ");";
+
+        String guests = "CREATE TABLE guests ( " +
+            "_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, " +
+            "name TEXT NOT NULL, " +
+            "gift_id INTEGER REFERENCES gifts (_id) ON DELETE SET NULL " +
+            "ON UPDATE SET NULL " +
+            "MATCH SIMPLE " +
+        ");";
         sqLiteDatabase.execSQL(gifts);
+        sqLiteDatabase.execSQL(guests);
     }
 
     @Override

@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-
 import com.antonioqm.bbcha.R;
 import com.antonioqm.bbcha.model.Gift;
+
+import java.util.List;
 
 /**
  * Created by AntonioQM on 23/11/16.
